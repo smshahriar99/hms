@@ -5,6 +5,7 @@ import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import CssBaseline from "@mui/material/CssBaseline";
 import useScrollTrigger from "@mui/material/useScrollTrigger";
+import { useTheme } from "@mui/material/styles";
 
 function ElevationScroll(props) {
   const { children, window } = props;
@@ -32,13 +33,17 @@ ElevationScroll.propTypes = {
 };
 
 export default function ElevateAppBar(props) {
+  const theme = useTheme();
   return (
     <React.Fragment>
       <CssBaseline />
       <ElevationScroll {...props}>
         <AppBar
-          style={{
+          sx={{
             textAlign: "center",
+            [theme.breakpoints.down("sm")]: {
+              display: "none",
+            },
           }}
         >
           <Typography
